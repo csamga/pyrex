@@ -17,18 +17,18 @@ extern "C" {
 #	define PRXAPI
 #endif // PRXAPI
 
-// PYREX PUBLIC MACRO CONSTANTS
+// PYREX MACRO CONSTANTS
 //
 #define PRX_TRUE 1
 #define PRX_FALSE 0
 
-// PYREX PUBLIC TYPES
+// PYREX TYPES
 //
 typedef struct PrxWindow PrxWindow;
 
 #include <stdbool.h>
 
-// PYREX PUBLIC DECLARATIONS
+// PYREX API
 //
 PRXAPI PrxWindow *prx_window_create(unsigned int width,
 									unsigned int height,

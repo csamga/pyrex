@@ -13,8 +13,8 @@ PRXAPI PrxWindow *prx_window_create(unsigned int width,
 {
 	struct _PrxWindow *window = malloc(sizeof *window);
 
-	if (window == NULL) {
-		fprintf(stderr, "[ERROR]: malloc for *window failed\n");
+	if (!window) {
+		fprintf(stderr, "[ERROR] malloc for *window failed\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -46,7 +46,7 @@ PRXAPI PrxWindow *prx_window_create(unsigned int width,
 
 		if (!_prx_internal.window_class) {
 			fprintf(stderr,
-					"[ERROR]: RegisterClassEx failed: %lu\n",
+					"[ERROR] RegisterClassEx failed: %lu\n",
 					GetLastError());
 			exit(EXIT_FAILURE);
 		}
@@ -64,7 +64,7 @@ PRXAPI PrxWindow *prx_window_create(unsigned int width,
 
 	wchar_t *wide_title = _wide_string_from_utf8(title);
 
-	window->handle = CreateWindowEx(ext_style,
+	window->handle = CreateWindowExW(ext_style,
 									 MAKEINTATOM(_prx_internal.window_class),
 									 wide_title,
 									 style,
@@ -77,8 +77,8 @@ PRXAPI PrxWindow *prx_window_create(unsigned int width,
 									 _prx_internal.instance,
 									 (LPVOID)window);
 
-	if (window->handle == NULL) {
-		fprintf(stderr, "[ERROR]: CreateWindowExFailed: %lu\n", GetLastError());
+	if (!window->handle) {
+		fprintf(stderr, "[ERROR] CreateWindowExFailed: %lu\n", GetLastError());
 		exit(EXIT_FAILURE);
 	}
 

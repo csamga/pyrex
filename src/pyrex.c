@@ -12,7 +12,7 @@ PRXAPI void prx_process_events(void) {
 	}
 }
 
-// INTERNAL API
+// PRIVATE API
 //
 wchar_t *_wide_string_from_utf8(const char *source)
 {

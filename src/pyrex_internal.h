@@ -21,8 +21,6 @@ struct _PrxInternal {
 	ATOM window_class;
 };
 
-extern struct _PrxInternal _prx_internal;
-
 struct _PrxWindow {
 	HWND handle;
 	unsigned int client_width;
@@ -32,4 +30,6 @@ struct _PrxWindow {
 };
 
 wchar_t *_wide_string_from_utf8(const char *source);
+
+extern struct _PrxInternal _prx_internal;
 

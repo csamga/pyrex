@@ -1,5 +1,5 @@
 CC := gcc
-CPPFLAGS := -I../include
+CPPFLAGS := -I../include -DDEBUG
 CFLAGS := -Wall -Wextra -pedantic -std=c17 -Og -g
 LDFLAGS := -mconsole -static -L../bin/debug
 LDLIBS := -lpyrex
