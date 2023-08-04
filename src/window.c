@@ -150,6 +150,8 @@ static LRESULT window_procedure(HWND window_handle,
 		window = (struct _PrxWindow *)user_data;
 	}
 
+	LRESULT result = 0;
+
 	switch (message) {
 	// 	case WM_SIZE: {
 	// 		unsigned int width = LOWORD(lparam);
@@ -171,9 +173,9 @@ static LRESULT window_procedure(HWND window_handle,
 		PostQuitMessage(EXIT_SUCCESS);
 		break;
 	default:
-		return DefWindowProcW(window_handle, message, wparam, lparam);
+		result = DefWindowProcW(window_handle, message, wparam, lparam);
 	}
 
-	return 0;
+	return result;
 }
 
