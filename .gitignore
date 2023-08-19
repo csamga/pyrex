@@ -1,8 +1,8 @@
 bin/
+lib
 build/
 .cache/
 examples/.cache/
-
 compile_commands.json
 examples/.compile_commands.json
 
