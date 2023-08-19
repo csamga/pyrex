@@ -1,16 +1,16 @@
 CC := gcc
 CPPFLAGS := -I../include -DDEBUG
-CFLAGS := -Wall -Wextra -pedantic -std=c17 -Og -g
-LDFLAGS := -mconsole -static -L../bin/debug
+CFLAGS := -Wall -Wextra -pedantic -std=c17 -O0 -ggdb3
+LDFLAGS := -mconsole -static -L../lib/debug
 LDLIBS := -lpyrex
 
 src_dir := .
 examples_dir := examples
 build_dir := ../build/$(examples_dir)
-bin_dir := ../bin/$(examples_dir)
+bin_dir := ../bin
 
 src := $(wildcard $(src_dir)/*.c)
-obj = $(patsubst $(src_dir)/%.c,$(build_dir)/%.o,$(src))
+obj := $(patsubst $(src_dir)/%.c,$(build_dir)/%.o,$(src))
 examples := $(patsubst $(build_dir)/%.o,$(bin_dir)/%,$(obj))
 
 .PHONY: all clean remake info
