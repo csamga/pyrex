@@ -6,7 +6,7 @@ debug_cppflags := -DDEBUG
 
 CFLAGS := -Wall -Wextra -pedantic -std=c17
 release_cflags := -O2
-debug_cflags := -Og -g
+debug_cflags := -O0 -ggdb3
 
 LDFLAGS := -static
 LDLIBS :=
@@ -15,6 +15,7 @@ lib_src_dir := src
 examples_src_dir := examples
 build_dir := build
 bin_dir := bin
+lib_dir := lib
 release_dir := release
 debug_dir := debug
 
@@ -23,8 +24,8 @@ release_obj = $(patsubst $(lib_src_dir)/%.c,$(build_dir)/$(release_dir)/%.o,$(sr
 debug_obj = $(patsubst $(lib_src_dir)/%.c,$(build_dir)/$(debug_dir)/%.o,$(src))
 
 lib := pyrex
-pyrex_release := $(bin_dir)/$(release_dir)/lib$(lib).a
-pyrex_debug := $(bin_dir)/$(debug_dir)/lib$(lib).a
+pyrex_release := $(lib_dir)/$(release_dir)/lib$(lib).a
+pyrex_debug := $(lib_dir)/$(debug_dir)/lib$(lib).a
 
 .PHONY: all \
 		pyrex.release \
