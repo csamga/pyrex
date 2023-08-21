@@ -76,7 +76,7 @@ PrxWindow *prx_window_create(
 			.hInstance = state.instance,
 			.hIcon = LoadIconW(state.instance, IDI_APPLICATION),
 			.hCursor = LoadCursorW(NULL, IDC_ARROW),
-			// .hbrBackground = (HBRUSH)(COLOR_ACTIVECAPTION + 1),
+			.hbrBackground = (HBRUSH)(1 + COLOR_BACKGROUND),
 			.hbrBackground = NULL,
 			.lpszMenuName = NULL,
 			.lpszClassName = L"PyrexWindowClass",
@@ -132,18 +132,6 @@ PrxWindow *prx_window_create(
 	}
 
 	free(wide_title);
-
-	DWORD gwl_style = GetWindowLongPtrW(window->handle, GWL_STYLE);
-	DWORD gwl_ext_style = GetWindowLongPtrW(window->handle, GWL_EXSTYLE);
-
-	printf(
-		"style: %.8x\next style: %.8x\n",
-		(unsigned int)gwl_style,
-		(unsigned int)gwl_ext_style
-	);
-
-	window_print_win32_style(gwl_style);
-	window_print_win32_ext_style(gwl_ext_style);
 
 	if (window_init_config.dpi_scaled) {
 		unsigned int dpi = GetDpiForWindow(window->handle);
